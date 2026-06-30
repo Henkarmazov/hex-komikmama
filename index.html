@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KomikMAma API Documentation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-indigo-100 selection:text-indigo-900">
+    <div class="max-w-5xl mx-auto py-12 px-6">
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100">
+            <!-- Header -->
+            <div class="bg-indigo-600 px-8 py-10 text-white">
+                <h1 class="text-4xl font-extrabold tracking-tight mb-3">KomikMAma API</h1>
+                <p class="text-indigo-100 text-lg">Dokumentasi unofficial REST API untuk scrapping web KomikMAma.</p>
+            </div>
+
+            <!-- Content -->
+            <div class="p-8">
+                <div class="mb-10">
+                    <h2 class="text-2xl font-bold text-slate-800 mb-2">Base URL</h2>
+                    <div class="bg-slate-100 p-4 rounded-lg flex items-center justify-between border border-slate-200">
+                        <code id="base-url" class="text-indigo-600 font-mono text-lg">...</code>
+                        <span class="text-xs font-semibold text-slate-500 uppercase tracking-wide bg-white px-2 py-1 rounded border shadow-sm">Production</span>
+                    </div>
+                </div>
+
+                <div class="space-y-8">
+                    <!-- Endpoint 1 -->
+                    <div class="group border border-slate-200 rounded-xl p-6 hover:shadow-md hover:border-indigo-200 transition-all duration-200 bg-white">
+                        <div class="flex items-center space-x-4 mb-3">
+                            <span class="bg-green-100 text-green-700 px-3 py-1 rounded-md font-bold text-sm tracking-wide">GET</span>
+                            <h3 class="text-xl font-bold text-slate-800 font-mono">/api/home</h3>
+                        </div>
+                        <p class="text-slate-600 mb-4">Mendapatkan data halaman utama yang berisi slider, komik populer hari ini, komik populer serial, dan update komik terbaru.</p>
+                        <a href="/api/home" target="_blank" class="inline-flex items-center text-sm font-semibold text-indigo-600 hover:text-indigo-800">
+                            Coba Endpoint <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </a>
+                    </div>
+
+                    <!-- Endpoint 2 -->
+                    <div class="group border border-slate-200 rounded-xl p-6 hover:shadow-md hover:border-indigo-200 transition-all duration-200 bg-white">
+                        <div class="flex items-center space-x-4 mb-3">
+                            <span class="bg-green-100 text-green-700 px-3 py-1 rounded-md font-bold text-sm tracking-wide">GET</span>
+                            <h3 class="text-xl font-bold text-slate-800 font-mono">/api/search</h3>
+                        </div>
+                        <p class="text-slate-600 mb-3">Mencari komik berdasarkan kata kunci (judul).</p>
+                        <div class="bg-slate-50 border border-slate-200 rounded-lg p-3 text-sm font-mono text-slate-700 mb-4">
+                            ?q=<span class="text-indigo-500">{query}</span>&page=<span class="text-indigo-500">{page}</span>
+                        </div>
+                        <a href="/api/search?q=solo&page=1" target="_blank" class="inline-flex items-center text-sm font-semibold text-indigo-600 hover:text-indigo-800">
+                            Coba Endpoint <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </a>
+                    </div>
+
+                    <!-- Endpoint 3 -->
+                    <div class="group border border-slate-200 rounded-xl p-6 hover:shadow-md hover:border-indigo-200 transition-all duration-200 bg-white">
+                        <div class="flex items-center space-x-4 mb-3">
+                            <span class="bg-green-100 text-green-700 px-3 py-1 rounded-md font-bold text-sm tracking-wide">GET</span>
+                            <h3 class="text-xl font-bold text-slate-800 font-mono">/api/detail</h3>
+                        </div>
+                        <p class="text-slate-600 mb-3">Mendapatkan informasi detail komik, sinopsis, rating, dan daftar chapter. Membutuhkan parameter URL asli komik.</p>
+                        <div class="bg-slate-50 border border-slate-200 rounded-lg p-3 text-sm font-mono text-slate-700 mb-4">
+                            ?url=<span class="text-indigo-500">{full_url}</span>
+                        </div>
+                        <a href="/api/detail?url=https://komikmama.online/manga/solo-leveling/" target="_blank" class="inline-flex items-center text-sm font-semibold text-indigo-600 hover:text-indigo-800">
+                            Coba Endpoint <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </a>
+                    </div>
+
+                    <!-- Endpoint 4 -->
+                    <div class="group border border-slate-200 rounded-xl p-6 hover:shadow-md hover:border-indigo-200 transition-all duration-200 bg-white">
+                        <div class="flex items-center space-x-4 mb-3">
+                            <span class="bg-green-100 text-green-700 px-3 py-1 rounded-md font-bold text-sm tracking-wide">GET</span>
+                            <h3 class="text-xl font-bold text-slate-800 font-mono">/api/chapter</h3>
+                        </div>
+                        <p class="text-slate-600 mb-3">Mendapatkan daftar URL gambar dari sebuah chapter untuk dibaca.</p>
+                        <div class="bg-slate-50 border border-slate-200 rounded-lg p-3 text-sm font-mono text-slate-700 mb-4">
+                            ?url=<span class="text-indigo-500">{full_url}</span>
+                        </div>
+                    </div>
+
+                    <!-- Endpoint 5 -->
+                    <div class="group border border-slate-200 rounded-xl p-6 hover:shadow-md hover:border-indigo-200 transition-all duration-200 bg-white">
+                        <div class="flex items-center space-x-4 mb-3">
+                            <span class="bg-green-100 text-green-700 px-3 py-1 rounded-md font-bold text-sm tracking-wide">GET</span>
+                            <h3 class="text-xl font-bold text-slate-800 font-mono">/api/genres</h3>
+                        </div>
+                        <p class="text-slate-600 mb-4">Mendapatkan daftar semua genre yang tersedia di web sumber.</p>
+                        <a href="/api/genres" target="_blank" class="inline-flex items-center text-sm font-semibold text-indigo-600 hover:text-indigo-800">
+                            Coba Endpoint <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </a>
+                    </div>
+
+                    <!-- Endpoint 6 -->
+                    <div class="group border border-slate-200 rounded-xl p-6 hover:shadow-md hover:border-indigo-200 transition-all duration-200 bg-white">
+                        <div class="flex items-center space-x-4 mb-3">
+                            <span class="bg-green-100 text-green-700 px-3 py-1 rounded-md font-bold text-sm tracking-wide">GET</span>
+                            <h3 class="text-xl font-bold text-slate-800 font-mono">/api/genres/:slug</h3>
+                        </div>
+                        <p class="text-slate-600 mb-3">Mendapatkan daftar komik berdasarkan slug genre tertentu.</p>
+                        <div class="bg-slate-50 border border-slate-200 rounded-lg p-3 text-sm font-mono text-slate-700 mb-4">
+                            ?page=<span class="text-indigo-500">{page}</span>
+                        </div>
+                        <a href="/api/genres/action" target="_blank" class="inline-flex items-center text-sm font-semibold text-indigo-600 hover:text-indigo-800">
+                            Coba Endpoint <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </a>
+                    </div>
+
+                    <!-- Endpoint 7 -->
+                    <div class="group border border-slate-200 rounded-xl p-6 hover:shadow-md hover:border-indigo-200 transition-all duration-200 bg-white">
+                        <div class="flex items-center space-x-4 mb-3">
+                            <span class="bg-green-100 text-green-700 px-3 py-1 rounded-md font-bold text-sm tracking-wide">GET</span>
+                            <h3 class="text-xl font-bold text-slate-800 font-mono">/api/filter</h3>
+                        </div>
+                        <p class="text-slate-600 mb-3">Mendapatkan daftar komik dengan filter pencarian lanjutan.</p>
+                        <div class="bg-slate-50 border border-slate-200 rounded-lg p-3 text-sm font-mono text-slate-700 mb-4 break-all">
+                            ?genre=<span class="text-indigo-500">{genre}</span>&status=<span class="text-indigo-500">{status}</span>&type=<span class="text-indigo-500">{type}</span>&order=<span class="text-indigo-500">{order}</span>&page=<span class="text-indigo-500">{page}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="bg-slate-50 border-t border-slate-200 p-6 text-center">
+                <p class="text-sm text-slate-500 font-medium">Built with Express & Node.js 🚀</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('base-url').textContent = window.location.origin;
+    </script>
+</body>
+</html>
